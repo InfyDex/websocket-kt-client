@@ -1,8 +1,5 @@
 package com.example.demo.ws
 
-import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.springframework.lang.Nullable
 import org.springframework.messaging.simp.stomp.StompCommand
 import org.springframework.messaging.simp.stomp.StompHeaders
 import org.springframework.messaging.simp.stomp.StompSession
@@ -30,7 +27,7 @@ class MyStompSessionHandler : StompSessionHandler {
 
     override fun afterConnected(session: StompSession, connectedHeaders: StompHeaders) {
         println("Connected to WebSocket")
-        session.subscribe("/topic/game-updates", MyStompFrameHandler())
+        session.subscribe("/topic/game-updates/51b45b38-afe6-44b6-9bf9-dd3b9ba5fd17", MyStompFrameHandler())
     }
 
     override fun handleException(p0: StompSession, p1: StompCommand?, p2: StompHeaders, p3: ByteArray, p4: Throwable) {
@@ -38,7 +35,7 @@ class MyStompSessionHandler : StompSessionHandler {
     }
 
     override fun handleTransportError(p0: StompSession, p1: Throwable) {
-        println("handleTransportError")
+        println("handleTransportError ${p1.printStackTrace()}")
     }
 }
 

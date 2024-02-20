@@ -12,7 +12,8 @@ class YourWebSocketService @Autowired constructor(
     private val stompSessionHandler: StompSessionHandler
 ) {
     fun connectToWebSocket() {
-        stompClient.connect("ws://localhost:8080/api/game-updates", stompSessionHandler)
+        stompClient.connect("ws://localhost:8080/api/game-updates/123", stompSessionHandler)
+        println("Connected to : ws://localhost:8080/api/game-updates/123\n")
     }
 
     init {
